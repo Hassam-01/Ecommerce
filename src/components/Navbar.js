@@ -18,6 +18,7 @@ export default function Navbar() {
     console.log("Searched Item: ", searchtermNav);
     // setSearchResult(searchtermNav);
     setSearchTermState(searchtermNav);
+    setSearchTerm("");
   } 
 
   return (
@@ -61,7 +62,7 @@ export default function Navbar() {
       </div>
     </div>
     <form className="d-flex" role="search" value = {searchtermNav} onSubmit={handleSubmit} onChange={handleChange}>
-      <input className="form-control me-2" style={{border: "1px solid #ffc107"}}   type="search" placeholder="Search" aria-label="Search"/>
+      <input className="form-control me-2" style={{border: "1px solid #ffc107"}} type="search"  value= {searchtermNav} placeholder="Search" aria-label="Search"/>
       <button className="btn btn-outline-warning btn-dark" type="submit" >Search</button>
       
     </form>

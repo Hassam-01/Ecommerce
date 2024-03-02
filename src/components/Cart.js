@@ -1,7 +1,23 @@
-import React from 'react'
+import React from 'react';
+import CartItems from './CartItems';
+import { useProductCount } from './States';
+
 export default function Cart() {
-  return (
-    <div>
+  // const {totalAmount} = useTotalAmount();
+  // const [totalAmountDisplay, setTotalAmountDisplay] = useState(0);
+
+  
+  // useEffect(() => {
+  //   setTotalAmountDisplay(prevAmount => prevAmount + totalAmount);
+  // }, [totalAmount]);
+
+
+// console.log("CART DISPLAY "+ totalAmount);
+
+const IDS = useProductCount();
+
+return (
+<div>
 <section className="h-100 gradient-custom" style={{backgroundColor: "#dbdbdb"}}>
         <div className="container py-5">
           <div className="row d-flex justify-content-center my-4">
@@ -10,54 +26,11 @@ export default function Cart() {
                 <div className="card-header py-3">
                   <h5 className="mb-0">Cart</h5>
                 </div>
-                <div className="card-body">
 
-                  <div className="row">
-                    <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                      <div className="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp"
-                          className="w-100" alt="Blue Jeans Jacket" />
-                        <a href="\">
-                          <div className="mask" style={{backgroundColor: "rgba(251, 251, 251, 0.2)"}}></div>
-                        </a>
-                      </div>
-                    </div>
-      
-                    <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                      <p><strong>Blue denim shirt</strong></p>
-                      <p>Color: blue</p>
-                      <p>Size: M</p>
-                     
-                          <button type="button" className="btn btn-warning btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
-                            title="Remove item">
-                            <i className="fas fa-trash"></i>
-                          </button>
-                          <button type="button" className="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
-                            title="Move to the wish list">
-                            <i className="fas fa-heart"></i>
-                          </button>
-                                           
-                    </div>
-      
-                    <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                      <div className="d-flex mb-4" style={{maxWidth: "300px"}}>
-                        
-                        <div className="form-outline">
-                            <input id="form1" min="0" name="quantity" value="1" type="number" className="form-control" />
-                            <label className="form-label" for="form1">Quantity</label>
-                            
-                        </div>
-                    </div>
-                        <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                {Object.entries(IDS).map(([id, count])=> (
 
-                            <p><strong>$17.99</strong></p>
-                        </div >
-                    </div>
-                  </div>
-
-                  <hr className="my-4" />
-      
-                </div>
+                <CartItems pdID ={id} pdCount = {count}/>
+                ))}
               </div>
               <div className="card mb-4">
                 <div className="card-body">
